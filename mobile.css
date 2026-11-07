@@ -1,0 +1,194 @@
+/* SKYLINE iPhone controls — shown only on touch-first devices. */
+#mobileFlightControls,
+#mobileMotionSetup,
+#mobileRotateHint { display: none; }
+
+body.skyline-mobile {
+  overscroll-behavior: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: none;
+}
+body.skyline-mobile,
+body.skyline-mobile * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+body.skyline-mobile img,
+body.skyline-mobile canvas { -webkit-user-drag: none; user-drag: none; }
+body.skyline-mobile #fps { display: none !important; }
+body.skyline-mobile #title button[data-act="tutorial"] { display: none !important; }
+body.skyline-mobile #shaveWrap {
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  width: min(46vw, 430px);
+  padding: 7px 9px 8px;
+}
+body.skyline-mobile #shaveWrap .label { font-size: 8px; }
+body.skyline-mobile #shaveWrap .prox { font-size: 16px; min-width: 58px; }
+body.skyline-mobile #challengeTrack {
+  right: calc(env(safe-area-inset-right) + 86px);
+  top: calc(env(safe-area-inset-top) + 58px);
+  width: min(300px, 40vw);
+  max-height: 42vh;
+  overflow: hidden;
+}
+body.skyline-mobile #hud .bl { bottom: 6px; left: 14px; transform: scale(.76); transform-origin: left bottom; }
+body.skyline-mobile #hud .br { bottom: 8px; right: 148px; transform: scale(.78); transform-origin: right bottom; }
+body.skyline-mobile #feed { right: 16px; width: 240px; top: 50%; transform: translateY(-50%) scale(.88); transform-origin: right center; }
+body.skyline-mobile #hints { display: none !important; }
+
+#mobileFlightControls {
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  pointer-events: none;
+  font-family: var(--sans, -apple-system, BlinkMacSystemFont, sans-serif);
+}
+body.skyline-mobile #mobileFlightControls { display: block; }
+#mobileFlightControls.live { pointer-events: none; }
+
+.mobile-action {
+  pointer-events: auto;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-action {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(7,11,16,.72);
+  color: #eef5fb;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 20px rgba(0,0,0,.28);
+  font: 700 10px/1 var(--sans, sans-serif);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.mobile-action:active,
+.mobile-action.held { background: rgba(255,122,61,.28); border-color: rgba(255,122,61,.82); }
+
+#mobileParachute,
+#mobilePause {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 10px);
+  min-width: 70px;
+  height: 40px;
+  border-radius: 8px;
+}
+#mobileParachute { left: calc(env(safe-area-inset-left) + 10px); }
+#mobilePause { right: calc(env(safe-area-inset-right) + 10px); }
+
+
+#mobileTuck {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 18px);
+  bottom: calc(env(safe-area-inset-bottom) + 18px);
+  width: 116px;
+  height: 66px;
+  border-radius: 12px;
+  font-size: 11px;
+  border-color: rgba(111,211,255,.34);
+}
+
+#mobileRightActions {
+  position: absolute;
+  right: calc(env(safe-area-inset-right) + 16px);
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  pointer-events: none;
+}
+#mobileRightActions .mobile-action {
+  width: 116px;
+  height: 66px;
+  border-radius: 12px;
+  font-size: 11px;
+}
+#mobileBarrel { border-color: rgba(255,122,61,.38); }
+
+#mobileTiltReadout {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 14px);
+  left: 50%; transform: translateX(-50%);
+  min-width: 152px;
+  text-align: center;
+  color: rgba(255,255,255,.58);
+  font: 700 8px/1 var(--sans, sans-serif);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 10px #000;
+  pointer-events: none;
+}
+#mobileTiltReadout b { color: #6fd3ff; font-family: var(--mono, monospace); font-size: 10px; }
+
+#mobileMotionSetup {
+  position: fixed;
+  inset: 0;
+  z-index: 230;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(90% 70% at 50% 40%, rgba(20,31,44,.97), rgba(4,7,11,.99));
+  color: #eef5fb;
+}
+body.skyline-mobile #mobileMotionSetup.open { display: grid; }
+#mobileMotionSetup .motion-card {
+  width: min(480px, 88vw);
+  padding: 26px 26px 22px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: rgba(8,12,18,.88);
+  box-shadow: 0 18px 70px rgba(0,0,0,.45);
+  text-align: center;
+}
+#mobileMotionSetup h2 { margin: 0 0 10px; font-weight: 300; letter-spacing: .2em; font-size: 23px; }
+#mobileMotionSetup p { color: #9bacbd; line-height: 1.6; font-size: 12px; }
+#mobileMotionSetup .motion-diagram { margin: 18px auto; font: 700 11px/1.8 var(--mono, monospace); color: #6fd3ff; }
+#mobileMotionSetup button {
+  width: 100%; min-height: 50px; margin-top: 8px;
+  border: 1px solid rgba(255,122,61,.75);
+  background: rgba(255,122,61,.14);
+  color: #fff;
+  font: 700 11px/1 var(--sans, sans-serif);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+#mobileMotionStatus { min-height: 18px; color: #ffb07e !important; }
+
+#mobileRotateHint {
+  position: fixed;
+  inset: 0;
+  z-index: 240;
+  background: #05080c;
+  color: #eef5fb;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+  font: 600 13px/1.6 var(--sans, sans-serif);
+  letter-spacing: .12em;
+}
+body.skyline-mobile.mobile-portrait #mobileRotateHint { display: grid; }
+#mobileRotateHint b { display: block; margin-bottom: 12px; color: #6fd3ff; font-size: 20px; letter-spacing: .2em; }
+
+/* Menu touch targets and safe-area spacing. */
+body.skyline-mobile .overlay { padding: calc(env(safe-area-inset-top) + 10px) calc(env(safe-area-inset-right) + 10px) calc(env(safe-area-inset-bottom) + 10px) calc(env(safe-area-inset-left) + 10px); }
+body.skyline-mobile .overlay-x { top: calc(env(safe-area-inset-top) + 8px); right: calc(env(safe-area-inset-right) + 8px); width: 42px; height: 42px; }
+body.skyline-mobile .btn,
+body.skyline-mobile .pill,
+body.skyline-mobile button { min-height: 38px; }
+
+@media (orientation: portrait) and (pointer: coarse) {
+  body.skyline-mobile #mobileFlightControls { visibility: hidden; }
+}
+
+/* Empty-screen hold = desktop-style tight carve. Subtle edge feedback only. */
+body.skyline-mobile.mobile-tight-turn #mobileFlightControls::after {
+  content: 'TIGHT CARVE';
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 24px);
+  transform: translateX(-50%);
+  color: rgba(255,176,126,.9);
+  font: 700 8px/1 var(--sans, sans-serif);
+  letter-spacing: .2em;
+  text-shadow: 0 1px 10px #000;
+  pointer-events: none;
+}
